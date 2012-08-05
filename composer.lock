@@ -1,17 +1,15 @@
 {
-    "hash": "43cfcc80391e00d5d62f902889f7744b",
+    "hash": "33424c1a0363fb2e728793a62314c021",
     "packages": [
         {
-            "package": "nette/nette",
+            "package": "JanMarek/WebLoader",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "source-reference": "b875aa561c9398806e2ab50c12d5ab5b8c5fde41",
+            "commit-date": "1335037707"
         },
         {
             "package": "nette/nette",
-            "version": "dev-master",
-            "source-reference": "3358e6ffc5069825801e3f49c603c36d0854677a",
-            "commit-date": "1343699498"
+            "version": "v2.0.4"
         }
     ],
     "packages-dev": null,
@@ -20,6 +18,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "nette/nette": 20
+        "janmarek/webloader": 20
     }
 }

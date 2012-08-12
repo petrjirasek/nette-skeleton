@@ -3,7 +3,7 @@ Skeleton app
 The skeleton application using Nette Framework.
 
 
-Config.neon
+Config.neon (use config.neon.example like a basic structure of your config.neon)
 -----------------------
 - set facebook app codes (app and secret)
 - set salt to make calculating hash stronger

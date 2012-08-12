@@ -1,7 +1,7 @@
 <?php
 
 use Nette\Application\UI,
-	Nette\Security as NS;
+Nette\Security as NS;
 
 
 /**
@@ -11,6 +11,26 @@ class SignPresenter extends BasePresenter
 {
 
 
+	public function actionIn()
+	{
+		// facebook
+		$fbUrl = $this->context->facebook->getLoginUrl(array(
+			'scope' => 'email',
+			'redirect_uri' => $this->link('//fbLogin'), // absolute
+		));
+
+		$this->template->fbUrl = $fbUrl;
+	}
+
+	public function actionFbLogin()
+	{
+		$me = $this->context->facebook->api('/me');
+		$identity = $this->context->facebookAuthenticator->authenticate($me);
+
+		$this->getUser()->login($identity);
+		$this->redirect('Homepage:');
+	}
+
 	/**
 	 * Sign in form component factory.
 	 * @return Nette\Application\UI\Form
@@ -18,8 +38,9 @@ class SignPresenter extends BasePresenter
 	protected function createComponentSignInForm()
 	{
 		$form = new UI\Form;
-		$form->addText('username', 'Username:')
-			->setRequired('Please provide a username.');
+		$form->addText('email', 'Email:')
+			->setRequired('Please provide a email.')
+			->addCondition($form::EMAIL);
 
 		$form->addPassword('password', 'Password:')
 			->setRequired('Please provide a password.');
@@ -33,7 +54,6 @@ class SignPresenter extends BasePresenter
 	}
 
 
-
 	public function signInFormSubmitted($form)
 	{
 		try {
@@ -43,14 +63,13 @@ class SignPresenter extends BasePresenter
 			} else {
 				$this->getUser()->setExpiration('+ 20 minutes', TRUE);
 			}
-			$this->getUser()->login($values->username, $values->password);
+			$this->getUser()->login($values->email, $values->password);
 			$this->redirect('Homepage:');
 
 		} catch (NS\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}
 	}
-
 
 
 	public function actionOut()

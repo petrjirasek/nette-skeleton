@@ -1,11 +1,17 @@
 {
-    "hash": "33424c1a0363fb2e728793a62314c021",
+    "hash": "b5ff2ae5e78675643534a4fa396e4b66",
     "packages": [
         {
             "package": "JanMarek/WebLoader",
             "version": "dev-master",
             "source-reference": "b875aa561c9398806e2ab50c12d5ab5b8c5fde41",
             "commit-date": "1335037707"
+        },
+        {
+            "package": "facebook/php-sdk",
+            "version": "dev-master",
+            "source-reference": "42481fa03f98465fd6dc6eb99a5124c01e8797d2",
+            "commit-date": "1344027009"
         },
         {
             "package": "nette/nette",
@@ -18,6 +24,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "janmarek/webloader": 20
+        "janmarek/webloader": 20,
+        "facebook/php-sdk": 20
     }
 }

@@ -9,25 +9,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nette Framework web application skeleton">
-    <meta name="robots" content="{$robots}" n:ifset="$robots">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Nette Framework web application skeleton">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
 
-    <title>{block title|striptags|upper}Nette Application Skeleton{/block}</title>
+	<title>{block title|striptags|upper}Nette Application Skeleton{/block}</title>
 
-    {control css}
-    {control js}
-    <!--<link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">-->
+{control css}
+{control js}
+	<!--<link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">-->
 
-    {block head}{/block}
+{block head}{/block}
 
 
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 
 
 </head>
@@ -35,76 +35,90 @@
 <body>
 
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">Project name</a>
-            <div class="btn-group pull-right">
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="icon-user"></i> Username
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Profile</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Sign Out</a></li>
-                </ul>
-            </div>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li n:class="$presenter->isLinkCurrent('Homepage:default') ? active"><a n:href="Homepage:default">Home</a></li>
-                    <li n:class="$presenter->isLinkCurrent('Homepage:about') ? active"><a n:href="Homepage:about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </div>
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="#">Project name</a>
+
+			<div class="btn-group pull-right">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="icon-user"></i>
+				{if $user->isLoggedIn()}
+					{$user->GetIdentity()->email}
+					{else}
+					Log in
+				{/if}
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Profile</a></li>
+					<li class="divider"></li>
+					<li><a n:href="Sign:out">Sign Out</a></li>
+				</ul>
+			</div>
+			<div class="nav-collapse">
+				<ul class="nav">
+					<li n:class="$presenter->isLinkCurrent('Homepage:default') ? active"><a n:href="Homepage:default">Home</a>
+					</li>
+					<li n:class="$presenter->isLinkCurrent('Homepage:about') ? active">
+						<a n:href="Homepage:about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
 </div>
 
 <div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="well sidebar-nav">
-                <ul class="nav nav-list">
-                    <li class="nav-header">Sidebar</li>
-                    <li class="active"><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="nav-header">Sidebar</li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="nav-header">Sidebar</li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
+	<div class="row-fluid">
+		<div class="span3">
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">Sidebar</li>
+					<li class="active"><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li class="nav-header">Sidebar</li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li class="nav-header">Sidebar</li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+				</ul>
+			</div>
+			<!--/.well -->
+		</div>
+		<!--/span-->
+		<div class="span9">
 
-            <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+			<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
 
-            {include #content}
+		{include #content}
 
-        </div><!--/span-->
-    </div><!--/row-->
+		</div>
+		<!--/span-->
+	</div>
+	<!--/row-->
 
-    <hr>
+	<hr>
 
-    <footer>
-        <p>&copy; Company 2012</p>
-    </footer>
+	<footer>
+		<p>&copy; Company 2012</p>
+	</footer>
 
-</div><!--/.fluid-container-->
+</div>
+<!--/.fluid-container-->
 
 </body>
 </html>
